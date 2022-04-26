@@ -29,9 +29,12 @@ playBtn.addEventListener("click", function() {
     const clearedCells = [];
     const winningCondition = boxQuantity - bombsQuantity;
 
-    // CREAZIONE ELEMENTI GRIGLIA
+    // CREAZIONE ELEMENTI GRIGLIA E REST ELEMENTI PRESENTI
     const gridContainer = document.querySelector(".grid-container");
     gridContainer.innerHTML = "";
+    let gameResult = document.getElementById("game-result");
+    gameResult.innerHTML ="";
+
     for ( let i = 1; i <= boxQuantity; i++ ) {
     
         // assegno il numero al box
@@ -50,7 +53,7 @@ playBtn.addEventListener("click", function() {
             
             const clickedNumber = parseInt(this.querySelector("span").textContent);
             const score = clearedCells.length;
-            let gameResult = document.getElementById("game-result");
+            gameResult = document.getElementById("game-result");
             if (bombsPlacement.includes(clickedNumber)) {
                 this.classList.add("bomb");
                 gameResult.innerHTML = `Hai perso!Il tuo punteggio é ${score}`;
