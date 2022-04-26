@@ -25,8 +25,9 @@ playBtn.addEventListener("click", function() {
     const bombsPlacement = generateUniqueRndNumbers(bombsQuantity, maxBoxQuantity);
     console.log("bombsPlacement", bombsPlacement);
 
-    // array dove salvare le celle "liberate" e calcolare quidni il punteggio
+    // array dove salvare le celle "liberate" e calcolare quidni il punteggio + condizione di vittoria
     const clearedCells = [];
+    const winningCondition = boxQuantity - bombsQuantity;
 
     // CREAZIONE ELEMENTI GRIGLIA
     const gridContainer = document.querySelector(".grid-container");
@@ -47,20 +48,22 @@ playBtn.addEventListener("click", function() {
         // gestione click elemento
         gridBox.addEventListener("click", function() {
             
-            // devo prelevare il numero cliccato
-            // e colorare di rosso se viene cliccata una bomba
-            // altrimenti coloro di blu e pusho il numero nell'array dei "punti"
             const clickedNumber = parseInt(this.querySelector("span").textContent);
+            const score = clearedCells.length;
+            let gameResult = document.getElementById("game-result");
             if (bombsPlacement.includes(clickedNumber)) {
                 this.classList.add("bomb");
+                gameResult.innerHTML = `Hai perso!Il tuo punteggio é ${score}`;
             } else {
                 this.classList.add("clicked");
                 this.style.pointerEvents = "none";
                 clearedCells.push(clickedNumber);
                 console.log("clearedCells", clearedCells);
+                if (clearedCells.length >= winningCondition) {
+                    gameResult.innerHTML = `Hai vinto!!!`;
+                }
             }
         })
-    
         // inserisco gli elementi nel container
         gridContainer.append(gridBox);
     }
