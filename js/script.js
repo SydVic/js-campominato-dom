@@ -2,7 +2,7 @@ const playBtn = document.getElementById("play-game");
 
 playBtn.addEventListener("click", function() {
 
-    // SELEZIONE DELLA DIFFICOLTA' E ASSEGNAZIONE GRIGLIA 
+    // SELEZIONE DELLA DIFFICOLTA' E ASSEGNAZIONE DIMENSIONE GRIGLIA 
     const userDifficulty = document.getElementById("user-difficulty").value;
 
     let boxQuantity = 0;
@@ -23,7 +23,7 @@ playBtn.addEventListener("click", function() {
     const bombsQuantity = 16;
     const maxBoxQuantity = boxQuantity;
     const bombsPlacement = generateUniqueRndNumbers(bombsQuantity, maxBoxQuantity);
-    console.log(bombsPlacement);
+    console.log("bombsPlacement", bombsPlacement);
 
 
     // CREAZIONE ELEMENTI GRIGLIA
@@ -45,6 +45,17 @@ playBtn.addEventListener("click", function() {
         // gestione click elemento
         gridBox.addEventListener("click", function() {
             this.classList.add("clicked");
+
+            // devo prelevare il numero cliccato
+            // e colorare di rosso se viene cliccata una bomba
+            // altrimenti coloro di blu e pusho il numero nell'array dei "punti"
+            const clickedNumber = parseInt(this.querySelector("span").textContent);
+            console.log(clickedNumber, typeof(clickedNumber));
+            if (bombsPlacement.includes(clickedNumber)) {
+                this.classList.add("bomb");
+            } else {
+                
+            }
         })
     
         // inserisco gli elementi nel container

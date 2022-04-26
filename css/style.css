@@ -73,19 +73,23 @@ div.grid-box {
     height: calc(100% / 7);
 }
 
-div.grid-box span {
+.grid-box span {
     display: none;
 }
 
-div.grid-box.clicked {
+.clicked {
     background-color: #6495ed;
     color: white;
 }
 
-div.grid-box.clicked span {
+.clicked span {
     display: block;
 }
 
-.bg-red {
+.bomb {
     background-color: #ff0000;
+}
+
+.bomb span {
+    display: block;
 }
