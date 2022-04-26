@@ -79,7 +79,7 @@ div.grid-box {
 
 .clicked {
     background-color: #6495ed;
-    color: white;
+    color: #ffffff;
 }
 
 .clicked span {
@@ -92,4 +92,5 @@ div.grid-box {
 
 .bomb span {
     display: block;
+    color: #ffffff;
 }
